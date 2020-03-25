@@ -12,7 +12,7 @@ p <- 0.05    # 張替確率
 ## 感染モデルの特性
 prob <- 0.04 # 感染確率
 deltaL <- 3  # 潜伏期間
-deltaP <- 3  # 媒介期間
+deltaP <- 3  # 発症期間
 ## シミュレーションの設定
 Tmax <- 120  # 時間上限
 
@@ -51,7 +51,7 @@ legend("bottomright", inset=0.05,
        legend=dLvec,
        col=rainbow(length(dLvec)),lty=1,lwd=3)
 
-### 媒介期間の影響
+### 発症期間の影響
 myExp4.2 <- list()
 dPvec <- 1:5
 for(i in 1:length(dPvec)){

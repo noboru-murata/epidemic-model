@@ -12,7 +12,7 @@ myAdjlist <- get.adjlist(myGraph) # 隣接エッジ
 ## 感染モデルの特性
 prob <- 0.6 # 感染確率
 deltaL <- 0 # 潜伏期間
-deltaP <- 1 # 媒介期間 
+deltaP <- 1 # 発症期間 
 ## シミュレーションの設定
 Tmax <- 60  # 時間上限
 

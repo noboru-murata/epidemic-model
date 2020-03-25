@@ -20,7 +20,7 @@ sampleInfect <- function(adjacent,susceptible,prob){
 myTrial <- function(adjacencyList, # 隣接リスト
                     prob=0.01, # 感染確率
                     deltaL=10, # 潜伏期間
-                    deltaP=3, # 媒介期間
+                    deltaP=3, # 発症期間
                     Tmax=60, # 模擬実験期間
                     initRandom=FALSE # 初期感染者をランダム
                     ){
