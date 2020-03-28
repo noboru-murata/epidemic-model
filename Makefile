@@ -1,4 +1,4 @@
-MSG = debug
+MSG = "debug"
 SRC = epidemic
 push:
 	git add -u
