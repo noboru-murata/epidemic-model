@@ -1,5 +1,12 @@
 MSG = "debug"
-SRC = epidemic
+SRC = epidemic.tex
+TARGET = $(SRC:%.tex=%.pdf)
+
+all:	$(TARGET)
+
+$(TARGET):	$(SRC)
+	latexmk $(SRC)
+
 push:
 	git add -u
 	git commit -m ${MSG}
