@@ -76,7 +76,6 @@
 ここでは簡単のため全ての感染者に対して同一であるとしてモデル化する．
 
 記号を定義し，定式化すると以下のようになる．
-
 時刻 $t$ における頂点 $i$ の状態を $S_{i}(t)$ で表し，
 潜伏期間を $\Delta L$ ，
 発症期間を $\Delta P$ で表すことにする．
@@ -111,8 +110,7 @@
 頂点 $i$ と $j$ の間に辺 $ij$ があり，
 頂点 $i$ は未感染で，
 頂点 $j$ が発症期間にある場合，
-感染は以下のように
-感染確率 $p$ で各辺ごとに独立に起こるとする．
+感染は確率 $p$ で各辺ごとに独立に起こるとする．
 #+begin_export latex
 \begin{align}
   \Prob{\text{頂点$j$から$i$に感染する}} &=p\\
@@ -120,7 +118,7 @@
 \end{align}
 #+end_export
 まとめると状態の遷移は以下の規則に従って
-単位時間ごとに行われるものとする．
+単位時間ごとに行われる．
 #+begin_export latex
 \begin{equation}
   S_{i}(t{+}1)
@@ -136,7 +134,7 @@
 以上が，基本的なモデルとなる．
 
 現実を模擬するには，
-- どのようなグラフ構造(人と人の関係を表す集団の繋がり)を想定するのか?
+- どのようなグラフ構造(集団の繋がり)を想定するのか?
 - 離散時間モデルの単位時間(以下では日を想定する)に対して潜伏期間，発症期間をどのように設定するか?
 - 感染確率をどの程度に見積るのか?
 という点が肝要となる．
@@ -146,6 +144,20 @@
 まず，比較的小さなグラフを用いて
 感染モデルの数値実験を行い，
 その結果を視覚化する．
+
+#+begin_export latex
+\begin{figure*}%[htbp]
+  \centering
+  \GraphFile{figs/exp1}
+  \myGraph[.3]{張替確率$=0$(規則的なグラフ)}
+  \myGraph[.3]{張替確率$=0.05$}
+  \myGraph[.3]{張替確率$=1$(ランダムグラフ)}
+  \sidecaption{Watts-Strogatzのモデル．
+    張替確率を変えることによって規則的な構造から
+    ランダムな構造を持つものまで多様なグラフを生成することができる．
+    \label{fig:exp1-1}}
+\end{figure*}
+#+end_export
 
 以下では集団のグラフ構造の生成モデルとして
 Watts-Strogatzのモデルを用いる．[fn:5]
@@ -162,20 +174,6 @@ Watts-Strogatzのモデルを用いる．[fn:5]
 頂点数30，
 初期次数6，
 張替確率を0,0.05,1とした場合に生成されるグラフの例である．
-
-#+begin_export latex
-\begin{figure*}%[htbp]
-  \centering
-  \GraphFile{figs/exp1}
-  \myGraph[.3]{張替確率$=0$(規則的なグラフ)}
-  \myGraph[.3]{張替確率$=0.05$}
-  \myGraph[.3]{張替確率$=1$(ランダムグラフ)}
-  \sidecaption{Watts-Strogatzのモデル．
-    張替確率を変えることによって規則的な構造から
-    ランダムな構造に変化することがわかる．
-    \label{fig:exp1-1}}
-\end{figure*}
-#+end_export
 
 #+begin_export latex
 \begin{figure}[htbp]
@@ -211,16 +209,16 @@ Watts-Strogatzのモデルを用いる．[fn:5]
 #+end_export
 
 次に，
-表\ref{tab:exp1}に示すパラメタを用いて
-感染の拡大する様子を模擬した数値実験の結果を
+表\ref{tab:exp1}に示すパラメタのもとで生成したグラフ上を
+感染が拡大する様子を模擬した数値実験の結果を
 図\ref{fig:exp1-2}に示す．
-図(a)は系全体の初期状態である．
+図\ref{fig:exp1-2}(a)は系全体の初期状態である．
 頂点同士を結ぶ辺の数から
 各頂点の接触機会は6程度であることが見てとれる．
 頂点の状態は色で区別され，
 白色は未感染，黄色は潜伏，赤色は発症，灰色は隔離に
 対応している．
-図(a)から(g)までは，
+図\ref{fig:exp1-2}(a)から(g)までは，
 時間(以下単位時間を1日と考える)の経過とともに
 感染状態がどのように拡散し遷移していくかを示している．
 実験設定では感染確率は0.5であるが，
@@ -229,7 +227,7 @@ Watts-Strogatzのモデルを用いる．[fn:5]
 したがって接触している3日間で隣接するほぼ全ての頂点に感染が起こり，
 30日で系全体に感染が拡大していく様子が見てとれる．
 全頂点数に対する感染した頂点の数を感染率と定義し，
-図(h)にこの推移を示している．
+図\ref{fig:exp1-2}(h)にこの推移を示している．
 感染者が少ない初期は拡がり方(感染率)はゆっくりとしているが，
 拡がり始めると指数的に速度が上昇することがわかる．
 
@@ -745,8 +743,9 @@ Watts-Strogatzのモデルは
     \toprule
     パラメタ&値 \\
     \midrule
-    頂点数&10000 \\
+    頂点数&4000 \\
     近傍数&4 \\
+    感染確率&0.6 \\
     潜伏期間&0 \\
     発症期間&1 \\
     \bottomrule
@@ -760,11 +759,13 @@ Watts-Strogatzのモデルは
 ただし，
 感染率の推移を見るように，
 感染者の増大は指数関数的ではなく，
-線形に増加している．
+ほぼ線形に増加している．
 
 #+begin_export latex
 \begin{figure}[htbp]
-  \sidecaption{キャプション
+  \sidecaption{%格子グラフ上の感染の推移．
+    4近傍に辺のある2次元の格子上を感染が拡大していく様子．
+    感染の増大は指数関数ほど速くはない．
     \label{fig:exp5-1}}
   \centering
   \GraphFile{figs/exp5}
@@ -819,7 +820,7 @@ Watts-Strogatzのモデルは
 
 感染確率が蔓延の仕方に及ぼす影響は，
 以下のように近似的に解析できる．
-無限遠点まで感染が拡がるか否かのの確率
+無限遠点まで感染が拡がるか否かの確率
 #+begin_export latex
 \begin{equation}
   Q
@@ -843,7 +844,7 @@ Watts-Strogatzのモデルは
     \underbrace{(1-P)}_{i\not\to j}
     +
     \underbrace{P_{\phantom{j}}}_{i\to j}
-    \cdot\underbrace{Q}_{j\not\to\infty}+
+    \cdot\underbrace{Q}_{j\not\to\infty}
     \bigr)^{4}
 \end{align}
 #+end_export
@@ -853,7 +854,7 @@ Watts-Strogatzのモデルは
 以下の式を満たす $Q$ がどのような値となるかを考える．
 #+begin_export latex
 \begin{equation}
-  Q=\{P\times Q + (1-P)\}^{4},\;0<Q<1
+  Q=\{P\times Q + (1-P)\}^{4},\;(0\le Q\le 1)
 \end{equation}
 #+end_export
 式の左辺と右辺をそれぞれ $R$ とし，
@@ -867,17 +868,28 @@ Watts-Strogatzのモデルは
 \end{align}
 #+end_export
 を重ね描きしたものが
-図\ref{fig:exp6-1}である．
+図\ref{fig:exp6-1}(a)である．
 
 #+begin_export latex
-\begin{figure}%[htbp]
-  \sidecaption{確率$Q$の満たす条件．
+\begin{figure*}%[htbp]
+  \sidecaption{格子グラフ上の感染の終息状態の定性的な解析．
     \label{fig:exp6-1}}
   \centering
   \GraphFile{figs/exp6}
-  \myGraph*{}
-\end{figure}
+  \myGraph{確率$Q$の満たす条件}
+  \myGraph{感染確率と全感染率の関係}
+\end{figure*}
 #+end_export
+
+# #+begin_export latex
+# \begin{figure}%[htbp]
+#   \sidecaption{確率$Q$の満たす条件．
+#     \label{fig:exp6-1}}
+#   \centering
+#   \GraphFile{figs/exp6}
+#   \myGraph*{}
+# \end{figure}
+# #+end_export
 
 区間 $0\le Q\le 1$ に含まれる交点が，
 条件を満たす $Q$ の値となる．
@@ -888,22 +900,22 @@ Watts-Strogatzのモデルは
 終息期の全感染率は $1-Q$ で表される．
 感染確率 $P$ と 
 全感染率 $1-Q$ の関係を示すと
-図\ref{fig:exp6-2}となる．
+図\ref{fig:exp6-1}(b)となる．
 これから閾値(この場合は $p=0.25$)を越えると
 急速に全感染率が1に近付いくていことがわかる．
 
-#+begin_export latex
-\begin{figure}%[htbp]
-  \sidecaption{感染確率と全感染率の関係．
-    \label{fig:exp6-2}}
-  \centering
-  \myGraph*{}
-\end{figure}
-#+end_export
+# #+begin_export latex
+# \begin{figure}%[htbp]
+#   \sidecaption{感染確率と全感染率の関係．
+#     \label{fig:exp6-2}}
+#   \centering
+#   \myGraph*{}
+# \end{figure}
+# #+end_export
 
 * おわりに
 
-感染そのものは医学的な問題だが，
+感染そのものは医学的な問題であるが，
 感染の拡大する仕組みは数理的な問題として定式化される．
 本稿では，簡便ではあるが，
 ある程度現実的な状況を模擬するモデルを構成し，
@@ -912,11 +924,12 @@ Watts-Strogatzのモデルは
 - 発症期間
 - 潜伏期間
 の影響について議論した．
-また時間が十分経ったときの系状態としては二つ
+また時間が十分経ったとき，
+系の状態としては
 - 孤立した領域のみでの発症
 - 全体に蔓延して終息
-があるが，
-その機構についても感染確率の影響を調べた．
+の2つがあるが，
+感染確率の影響でこれらが分岐する機構についても調べた．
 
 感染が拡大する場合には，その拡がり方は一般に指数的となるが，
 - 治療方法の確立
@@ -924,8 +937,7 @@ Watts-Strogatzのモデルは
 - 治療薬・予防薬・ワクチンの開発
 のためには，指数の増大を決める時定数を小さくすることが必須である．
 感染確率を減らし，
-グラフ構造を疎でランダムネスが低いものに
-することによって，
+グラフ構造を疎でランダムネスが低いものにすることによって，
 場合によっては蔓延を避けることができるし，
 最悪でも拡大の速度を減少させることができる．
 人間が介入して変えられるのは，

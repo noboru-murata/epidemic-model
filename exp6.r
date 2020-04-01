@@ -10,8 +10,8 @@ lines(x,(p*x+(1-p))^4,col="red",lwd=3)
 lines(x,x,col="blue",lwd=3)
 for(p in seq(0.1,0.5,by=0.1))
     lines(x,(p*x+(1-p))^4,col="orange",lwd=3)
-text(0.1,0.75,labels="Sが小さい場合")
-text(0.2,0.05,labels="Sが大きい場合")
+text(0.1,0.75,labels="Pが小さい場合")
+text(0.2,0.05,labels="Pが大きい場合")
 title("Qの満たす条件")
 
 ## 解を計算する
