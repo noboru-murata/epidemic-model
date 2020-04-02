@@ -177,7 +177,17 @@ Watts-Strogatzのモデルを用いる．[fn:5]
 
 #+begin_export latex
 \begin{figure}[htbp]
-  \sidecaption{感染拡大の確率シミュレーション．
+  \centering
+  \myGraph{$t=1$}
+  \setcounter{GraphPage}{8}\myGraph{$t=5$}
+  \setcounter{GraphPage}{13}\myGraph{$t=10$}
+  \setcounter{GraphPage}{18}\myGraph{$t=15$}
+  \setcounter{GraphPage}{23}\myGraph{$t=20$}
+  \setcounter{GraphPage}{28}\myGraph{$t=25$}
+  \setcounter{GraphPage}{33}\myGraph{$t=30$}
+  \myGraph{感染率の推移}
+  \sidecaption[][-12\baselineskip]%
+  {感染拡大の確率シミュレーション．
     (a)-(g)は感染状態の遷移を，
     (h)は感染率(感染した頂点の数/全頂点数)の推移を示す．
     頂点の色は状態に対応し
@@ -196,15 +206,6 @@ Watts-Strogatzのモデルを用いる．[fn:5]
     % 白色は未感染，黄色は潜伏，赤色は発症，灰色は隔離に対応する．
     % 時間経過とともに未感染者が減少していく様子がわかる．
     \label{fig:exp1-2}}
-  \centering
-  \myGraph{$t=1$}
-  \setcounter{GraphPage}{8}\myGraph{$t=5$}
-  \setcounter{GraphPage}{13}\myGraph{$t=10$}
-  \setcounter{GraphPage}{18}\myGraph{$t=15$}
-  \setcounter{GraphPage}{23}\myGraph{$t=20$}
-  \setcounter{GraphPage}{28}\myGraph{$t=25$}
-  \setcounter{GraphPage}{33}\myGraph{$t=30$}
-  \myGraph{感染率の推移}
 \end{figure}
 #+end_export
 
@@ -680,7 +681,7 @@ Watts-Strogatzのモデルは
 感染確率を変えると
 少し異なる状況があらわれる．
 これを調べた結果を図\ref{fig:exp4-3}に示す．
-直感的に明かなように，
+直感的に明らかなように，
 感染確率が高くなるに従い感染速度は速くなり，
 ある程度確率が高くなると，
 発症期間を長くしたのと同様に
@@ -753,20 +754,8 @@ Watts-Strogatzのモデルは
 \end{margintable}
 #+end_export
 
-図\ref{fig:exp5-1}に感染の推移を示す．
-規則的ではあるが，
-先の実験と同様に感染が拡大していく様子がわかる．
-ただし，
-感染率の推移を見るように，
-感染者の増大は指数関数的ではなく，
-ほぼ線形に増加している．
-
 #+begin_export latex
 \begin{figure}[htbp]
-  \sidecaption{%格子グラフ上の感染の推移．
-    4近傍に辺のある2次元の格子上を感染が拡大していく様子．
-    感染の増大は指数関数ほど速くはない．
-    \label{fig:exp5-1}}
   \centering
   \GraphFile{figs/exp5}
   \myGraph{$t=1$}
@@ -775,8 +764,20 @@ Watts-Strogatzのモデルは
   \setcounter{GraphPage}{45}\myGraph{$t=45$}
   \setcounter{GraphPage}{60}\myGraph{$t=60$}
   \myGraph{感染率の推移}
+  \sidecaption[][-5\baselineskip]%格子グラフ上の感染の推移．
+  {4近傍に辺のある2次元の格子上を感染が拡大していく様子．
+    感染の増大は指数関数ほど速くはない．
+    \label{fig:exp5-1}}
 \end{figure}
 #+end_export
+
+図\ref{fig:exp5-1}に感染の推移を示す．
+規則的ではあるが，
+先の実験と同様に感染が拡大していく様子がわかる．
+ただし，
+感染率の推移を見るように，
+感染者の増大は指数関数的ではなく，
+ほぼ線形に増加している．
 
 感染確率を変えて，
 複数回実験した結果を
@@ -840,21 +841,22 @@ Watts-Strogatzのモデルは
   &\simeq\Prob{\text{頂点$i$の近傍$j$を経由して無限遠点に到達する経路がない}}^{4}\\
   &=\bigl(\Prob{\text{頂点$i$から近傍に経路がない}}\bigr.\\
   &\quad + \bigl.\Prob{\text{頂点$j$には行けるがそこから経路がない}}\bigr)^{4}\\
-  &=\bigl(
+  &=\bigl\{
     \underbrace{(1-P)}_{i\not\to j}
     +
     \underbrace{P_{\phantom{j}}}_{i\to j}
-    \cdot\underbrace{Q}_{j\not\to\infty}
-    \bigr)^{4}
+    \times\underbrace{Q}_{j\not\to\infty}
+    \bigr\}^{4}
 \end{align}
 #+end_export
-4近傍の各点から無限遠への経路の有無は本来は独立ではないので式は近似であるが，
+4近傍の各点から無限遠への経路の有無は本来は独立ではないので
+式はあくまで近似であるが，
 定性的な議論としてはこれを認めてもらうこととし，
 感染確率 $P$ に対して
-以下の式を満たす $Q$ がどのような値となるかを考える．
+以下の式を満たす $Q$ がどのような値となるかを考える．[fn:14]
 #+begin_export latex
 \begin{equation}
-  Q=\{P\times Q + (1-P)\}^{4},\;(0\le Q\le 1)
+  Q=\{(1-P) + P\times Q \}^{4},\;(0\le Q\le 1)
 \end{equation}
 #+end_export
 式の左辺と右辺をそれぞれ $R$ とし，
@@ -863,8 +865,8 @@ Watts-Strogatzのモデルは
 2つの関数
 #+begin_export latex
 \begin{align}
-  R&=Q\\
-  R&=\{(1-P) + P\times Q\}^{4}
+  R&=Q && \text{(緑線)}\\
+  R&=\{(1-P) + P\times Q\}^{4} &&\text{(オレンジ・赤線)}
 \end{align}
 #+end_export
 を重ね描きしたものが
@@ -891,7 +893,10 @@ Watts-Strogatzのモデルは
 # \end{figure}
 # #+end_export
 
-区間 $0\le Q\le 1$ に含まれる交点が，
+$R=Q$ (緑線)と
+$R=(Q\text{の4次式})$ (オレンジ・赤線)
+の交点のうちで，
+区間 $0\le Q\le 1$ に含まれるものが
 条件を満たす $Q$ の値となる．
 感染確率 $P$ の大小によって
 解が $0\le Q\le 1$ の間を移動していく様子がわかる．
@@ -902,7 +907,7 @@ Watts-Strogatzのモデルは
 全感染率 $1-Q$ の関係を示すと
 図\ref{fig:exp6-1}(b)となる．
 これから閾値(この場合は $p=0.25$)を越えると
-急速に全感染率が1に近付いくていことがわかる．
+急速に全感染率が1に近付いくていことがわかる．[fn:13]
 
 # #+begin_export latex
 # \begin{figure}%[htbp]
@@ -950,6 +955,13 @@ Watts-Strogatzのモデルは
 ということで，結局人間ができることは限られている．
 
 * Footnotes
+
+[fn:14]この近似はかなり雑なので，
+厳密な解析を知りたい場合は例えば
+[[https://doi.org/10.1007/978-3-662-03981-6_11][Grimmett G. (1999) Bond Percolation in Two Dimensions. In: Percolation. Grundlehren der mathematischen Wissenschaften (A Series of Comprehensive Studies in Mathematics), vol 321. Springer, Berlin, Heidelberg]]
+などを参照． 
+
+[fn:13]厳密な解析による閾値は $p=0.5$ である．
 
 [fn:1]ここで考える接触はいわゆる濃厚接触に限らず，
 比較的密集した空間に同時に留まることがあり，

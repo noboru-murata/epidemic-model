@@ -1,4 +1,4 @@
-% Created 2020-04-01 Wed 22:33
+% Created 2020-04-02 Thu 18:28
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt,oneside]{scrartcl}
 \usepackage{myhandout}
@@ -18,7 +18,7 @@
 \maketitle
 
 \section{はじめに}
-\label{sec:org2c11dfe}
+\label{sec:orgec63a41}
 
 感染爆発(pandemic)を防ぐために，
 外出の抑制など感染者との接触の機会を減らす努力が行われているが，
@@ -30,7 +30,7 @@
 から参照できる．
 
 \section{数理モデル}
-\label{sec:orgce7116a}
+\label{sec:org0d3183c}
 人が相互に接触して感染症が拡大する過程は，
 数理的にはグラフ上の確率的な拡散過程としてモデル化することができる．
 
@@ -153,7 +153,7 @@
 という点が肝要となる．
 
 \section{感染の推移}
-\label{sec:org4f167ff}
+\label{sec:org9cfd464}
 
 まず，比較的小さなグラフを用いて
 感染モデルの数値実験を行い，
@@ -189,7 +189,17 @@ Watts-Strogatzのモデルを用いる．\footnote{Watts, D., Strogatz, S. Colle
 張替確率を0,0.05,1とした場合に生成されるグラフの例である．
 
 \begin{figure}[htbp]
-  \sidecaption{感染拡大の確率シミュレーション．
+  \centering
+  \myGraph{$t=1$}
+  \setcounter{GraphPage}{8}\myGraph{$t=5$}
+  \setcounter{GraphPage}{13}\myGraph{$t=10$}
+  \setcounter{GraphPage}{18}\myGraph{$t=15$}
+  \setcounter{GraphPage}{23}\myGraph{$t=20$}
+  \setcounter{GraphPage}{28}\myGraph{$t=25$}
+  \setcounter{GraphPage}{33}\myGraph{$t=30$}
+  \myGraph{感染率の推移}
+  \sidecaption[][-12\baselineskip]%
+  {感染拡大の確率シミュレーション．
     (a)-(g)は感染状態の遷移を，
     (h)は感染率(感染した頂点の数/全頂点数)の推移を示す．
     頂点の色は状態に対応し
@@ -208,15 +218,6 @@ Watts-Strogatzのモデルを用いる．\footnote{Watts, D., Strogatz, S. Colle
     % 白色は未感染，黄色は潜伏，赤色は発症，灰色は隔離に対応する．
     % 時間経過とともに未感染者が減少していく様子がわかる．
     \label{fig:exp1-2}}
-  \centering
-  \myGraph{$t=1$}
-  \setcounter{GraphPage}{8}\myGraph{$t=5$}
-  \setcounter{GraphPage}{13}\myGraph{$t=10$}
-  \setcounter{GraphPage}{18}\myGraph{$t=15$}
-  \setcounter{GraphPage}{23}\myGraph{$t=20$}
-  \setcounter{GraphPage}{28}\myGraph{$t=25$}
-  \setcounter{GraphPage}{33}\myGraph{$t=30$}
-  \myGraph{感染率の推移}
 \end{figure}
 
 次に，
@@ -262,7 +263,7 @@ Watts-Strogatzのモデルを用いる．\footnote{Watts, D., Strogatz, S. Colle
 \end{margintable}
 
 \section{確率的なばらつきの評価}
-\label{sec:orgf78386b}
+\label{sec:org8f031ff}
 
 確率的な数値実験では，
 乱数系列の違いによって結果はばらつくことになる．
@@ -402,7 +403,7 @@ Watts-Strogatzのモデルを用いることとし，
 拡大の速度の定性的な議論を行うこととする．
 
 \section{グラフ構造の特性の影響}
-\label{sec:org3a892a8}
+\label{sec:org44cc70a}
 
 次に集団の関係をモデル化するグラフ構造の違いが，
 感染の拡大にどのように影響を与えるか確認する．
@@ -550,7 +551,7 @@ Watts-Strogatzのモデルは
 維持しなくてはならないことになる．\footnote{これは多くの国・自治体が要請している状態に他ならない．}
 
 \section{感染モデルの特性の影響}
-\label{sec:orgb162ac7}
+\label{sec:orgb2cd685}
 
 次に感染モデルの特性が感染に与える影響を確認する．
 実験設定において影響を調べるために変更した特性以外のパラメタは
@@ -680,7 +681,7 @@ Watts-Strogatzのモデルは
 感染確率を変えると
 少し異なる状況があらわれる．
 これを調べた結果を図\ref{fig:exp4-3}に示す．
-直感的に明かなように，
+直感的に明らかなように，
 感染確率が高くなるに従い感染速度は速くなり，
 ある程度確率が高くなると，
 発症期間を長くしたのと同様に
@@ -711,7 +712,7 @@ Watts-Strogatzのモデルは
 次項では，この現象の仕組みを調べてみることにする．
 
 \section{感染拡大の相転移}
-\label{sec:orge51cdcf}
+\label{sec:orgafea96e}
 
 前項では
 感染確率を動かしながら，
@@ -749,19 +750,7 @@ Watts-Strogatzのモデルは
   \end{tabular}
 \end{margintable}
 
-図\ref{fig:exp5-1}に感染の推移を示す．
-規則的ではあるが，
-先の実験と同様に感染が拡大していく様子がわかる．
-ただし，
-感染率の推移を見るように，
-感染者の増大は指数関数的ではなく，
-ほぼ線形に増加している．
-
 \begin{figure}[htbp]
-  \sidecaption{%格子グラフ上の感染の推移．
-    4近傍に辺のある2次元の格子上を感染が拡大していく様子．
-    感染の増大は指数関数ほど速くはない．
-    \label{fig:exp5-1}}
   \centering
   \GraphFile{figs/exp5}
   \myGraph{$t=1$}
@@ -770,7 +759,19 @@ Watts-Strogatzのモデルは
   \setcounter{GraphPage}{45}\myGraph{$t=45$}
   \setcounter{GraphPage}{60}\myGraph{$t=60$}
   \myGraph{感染率の推移}
+  \sidecaption[][-5\baselineskip]%格子グラフ上の感染の推移．
+  {4近傍に辺のある2次元の格子上を感染が拡大していく様子．
+    感染の増大は指数関数ほど速くはない．
+    \label{fig:exp5-1}}
 \end{figure}
+
+図\ref{fig:exp5-1}に感染の推移を示す．
+規則的ではあるが，
+先の実験と同様に感染が拡大していく様子がわかる．
+ただし，
+感染率の推移を見るように，
+感染者の増大は指数関数的ではなく，
+ほぼ線形に増加している．
 
 感染確率を変えて，
 複数回実験した結果を
@@ -827,27 +828,31 @@ Watts-Strogatzのモデルは
   &\simeq\Prob{\text{頂点$i$の近傍$j$を経由して無限遠点に到達する経路がない}}^{4}\\
   &=\bigl(\Prob{\text{頂点$i$から近傍に経路がない}}\bigr.\\
   &\quad + \bigl.\Prob{\text{頂点$j$には行けるがそこから経路がない}}\bigr)^{4}\\
-  &=\bigl(
+  &=\bigl\{
     \underbrace{(1-P)}_{i\not\to j}
     +
     \underbrace{P_{\phantom{j}}}_{i\to j}
-    \cdot\underbrace{Q}_{j\not\to\infty}
-    \bigr)^{4}
+    \times\underbrace{Q}_{j\not\to\infty}
+    \bigr\}^{4}
 \end{align}
-4近傍の各点から無限遠への経路の有無は本来は独立ではないので式は近似であるが，
+4近傍の各点から無限遠への経路の有無は本来は独立ではないので
+式はあくまで近似であるが，
 定性的な議論としてはこれを認めてもらうこととし，
 感染確率 \(P\) に対して
-以下の式を満たす \(Q\) がどのような値となるかを考える．
+以下の式を満たす \(Q\) がどのような値となるかを考える．\footnote{この近似はかなり雑なので，
+厳密な解析を知りたい場合は例えば
+\href{https://doi.org/10.1007/978-3-662-03981-6\_11}{Grimmett G. (1999) Bond Percolation in Two Dimensions. In: Percolation. Grundlehren der mathematischen Wissenschaften (A Series of Comprehensive Studies in Mathematics), vol 321. Springer, Berlin, Heidelberg}
+などを参照．}
 \begin{equation}
-  Q=\{P\times Q + (1-P)\}^{4},\;(0\le Q\le 1)
+  Q=\{(1-P) + P\times Q \}^{4},\;(0\le Q\le 1)
 \end{equation}
 式の左辺と右辺をそれぞれ \(R\) とし，
 横軸を \(Q\)
 縦軸を \(R\) として
 2つの関数
 \begin{align}
-  R&=Q\\
-  R&=\{(1-P) + P\times Q\}^{4}
+  R&=Q && \text{(緑線)}\\
+  R&=\{(1-P) + P\times Q\}^{4} &&\text{(オレンジ・赤線)}
 \end{align}
 を重ね描きしたものが
 図\ref{fig:exp6-1}(a)である．
@@ -861,7 +866,10 @@ Watts-Strogatzのモデルは
   \myGraph{感染確率と全感染率の関係}
 \end{figure*}
 
-区間 \(0\le Q\le 1\) に含まれる交点が，
+\(R=Q\) (緑線)と
+\(R=(Q\text{の4次式})\) (オレンジ・赤線)
+の交点のうちで，
+区間 \(0\le Q\le 1\) に含まれるものが
 条件を満たす \(Q\) の値となる．
 感染確率 \(P\) の大小によって
 解が \(0\le Q\le 1\) の間を移動していく様子がわかる．
@@ -872,10 +880,10 @@ Watts-Strogatzのモデルは
 全感染率 \(1-Q\) の関係を示すと
 図\ref{fig:exp6-1}(b)となる．
 これから閾値(この場合は \(p=0.25\))を越えると
-急速に全感染率が1に近付いくていことがわかる．
+急速に全感染率が1に近付いくていことがわかる．\footnote{厳密な解析による閾値は \(p=0.5\) である．}
 
 \section{おわりに}
-\label{sec:org55b8e7e}
+\label{sec:org0ac5c95}
 
 感染そのものは医学的な問題であるが，
 感染の拡大する仕組みは数理的な問題として定式化される．
