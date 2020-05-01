@@ -1,4 +1,4 @@
-% Created 2020-04-02 Thu 18:28
+% Created 2020-04-03 Fri 17:14
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt,oneside]{scrartcl}
 \usepackage{myhandout}
@@ -18,7 +18,7 @@
 \maketitle
 
 \section{はじめに}
-\label{sec:orgec63a41}
+\label{sec:orge8b7382}
 
 感染爆発(pandemic)を防ぐために，
 外出の抑制など感染者との接触の機会を減らす努力が行われているが，
@@ -30,7 +30,7 @@
 から参照できる．
 
 \section{数理モデル}
-\label{sec:org0d3183c}
+\label{sec:org886bcc0}
 人が相互に接触して感染症が拡大する過程は，
 数理的にはグラフ上の確率的な拡散過程としてモデル化することができる．
 
@@ -153,7 +153,7 @@
 という点が肝要となる．
 
 \section{感染の推移}
-\label{sec:org9cfd464}
+\label{sec:orgd9df35c}
 
 まず，比較的小さなグラフを用いて
 感染モデルの数値実験を行い，
@@ -263,7 +263,7 @@ Watts-Strogatzのモデルを用いる．\footnote{Watts, D., Strogatz, S. Colle
 \end{margintable}
 
 \section{確率的なばらつきの評価}
-\label{sec:org8f031ff}
+\label{sec:org2535bdd}
 
 確率的な数値実験では，
 乱数系列の違いによって結果はばらつくことになる．
@@ -403,7 +403,7 @@ Watts-Strogatzのモデルを用いることとし，
 拡大の速度の定性的な議論を行うこととする．
 
 \section{グラフ構造の特性の影響}
-\label{sec:org44cc70a}
+\label{sec:org58b5052}
 
 次に集団の関係をモデル化するグラフ構造の違いが，
 感染の拡大にどのように影響を与えるか確認する．
@@ -551,7 +551,7 @@ Watts-Strogatzのモデルは
 維持しなくてはならないことになる．\footnote{これは多くの国・自治体が要請している状態に他ならない．}
 
 \section{感染モデルの特性の影響}
-\label{sec:orgb2cd685}
+\label{sec:org10458e7}
 
 次に感染モデルの特性が感染に与える影響を確認する．
 実験設定において影響を調べるために変更した特性以外のパラメタは
@@ -712,7 +712,7 @@ Watts-Strogatzのモデルは
 次項では，この現象の仕組みを調べてみることにする．
 
 \section{感染拡大の相転移}
-\label{sec:orgafea96e}
+\label{sec:orgd996465}
 
 前項では
 感染確率を動かしながら，
@@ -866,6 +866,8 @@ Watts-Strogatzのモデルは
   \myGraph{感染確率と全感染率の関係}
 \end{figure*}
 
+\#+end\textsubscript{export}
+
 \(R=Q\) (緑線)と
 \(R=(Q\text{の4次式})\) (オレンジ・赤線)
 の交点のうちで，
@@ -882,8 +884,10 @@ Watts-Strogatzのモデルは
 これから閾値(この場合は \(p=0.25\))を越えると
 急速に全感染率が1に近付いくていことがわかる．\footnote{厳密な解析による閾値は \(p=0.5\) である．}
 
+\#+end\textsubscript{export}
+
 \section{おわりに}
-\label{sec:org0ac5c95}
+\label{sec:org9b2386d}
 
 感染そのものは医学的な問題であるが，
 感染の拡大する仕組みは数理的な問題として定式化される．

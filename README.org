@@ -9,3 +9,15 @@
 - 簡単な相転移(パーコレーションの一種)を確認
 
 まだ誤植や誤解がいろいろありそう．
+
+#+begin_src latex :exports results :results raw
+  \begin{equation}
+    y=f(x)
+  \end{equation}
+#+end_src
+
+#+begin_export latex
+  \begin{equation}
+    y=f(x)
+  \end{equation}
+#+end_export

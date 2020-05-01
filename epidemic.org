@@ -891,7 +891,7 @@ Watts-Strogatzのモデルは
 #   \GraphFile{figs/exp6}
 #   \myGraph*{}
 # \end{figure}
-# #+end_export
+#+end_export
 
 $R=Q$ (緑線)と
 $R=(Q\text{の4次式})$ (オレンジ・赤線)
@@ -916,7 +916,7 @@ $R=(Q\text{の4次式})$ (オレンジ・赤線)
 #   \centering
 #   \myGraph*{}
 # \end{figure}
-# #+end_export
+#+end_export
 
 * おわりに
 
