@@ -1,6 +1,8 @@
 #+TITLE: 感染症の確率シミュレーション
 #+OPTIONS: toc:nil
 # C-c C-e m m
+#+PROPERTY: header-args:latex :results output
+#+PROPERTY: header-args+:latex :exports both
 
 * 感染症の確率シミュレーション
 
