@@ -1,9 +1,9 @@
-% Created 2020-04-03 Fri 17:14
+% Created 2020-05-01 Fri 10:53
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt,oneside]{scrartcl}
 \usepackage{myhandout}
 \author{N. Murata}
-\date{\today}
+\date{2020年4月2日}
 \title{感染症の確率シミュレーション\\\medskip
 \large 数理モデルと相転移現象}
 \hypersetup{
@@ -11,14 +11,14 @@
  pdftitle={感染症の確率シミュレーション},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 26.3 (Org mode 9.3.1)}, 
+ pdfcreator={Emacs 26.3 (Org mode 9.3.6)}, 
  pdflang={Japanese}}
 \begin{document}
 
 \maketitle
 
 \section{はじめに}
-\label{sec:orge8b7382}
+\label{sec:org7aadbd6}
 
 感染爆発(pandemic)を防ぐために，
 外出の抑制など感染者との接触の機会を減らす努力が行われているが，
@@ -30,7 +30,7 @@
 から参照できる．
 
 \section{数理モデル}
-\label{sec:org886bcc0}
+\label{sec:org95c6141}
 人が相互に接触して感染症が拡大する過程は，
 数理的にはグラフ上の確率的な拡散過程としてモデル化することができる．
 
@@ -118,6 +118,7 @@
 %     -1 &\text{(隔離)}
 %   \end{cases}
 % \end{equation}
+
 したがって，
 状態\(S_{i}(t)\) には
 頂点 \(i\) が感染してからの単位時間数が保持されることになる．
@@ -130,6 +131,7 @@
   \Prob{\text{頂点$j$から$i$に感染する}} &=p\\
   \Prob{\text{頂点$j$から$i$に感染しない}}&=1-p
 \end{align}
+
 まとめると状態の遷移は以下の規則に従って
 単位時間ごとに行われる．
 \begin{equation}
@@ -142,6 +144,7 @@
     S_{i}(t)+1&\text{(それ以外)}
   \end{cases}
 \end{equation}
+
 以上が，基本的なモデルとなる．
 
 現実を模擬するには，
@@ -153,7 +156,7 @@
 という点が肝要となる．
 
 \section{感染の推移}
-\label{sec:orgd9df35c}
+\label{sec:org488f49f}
 
 まず，比較的小さなグラフを用いて
 感染モデルの数値実験を行い，
@@ -263,7 +266,7 @@ Watts-Strogatzのモデルを用いる．\footnote{Watts, D., Strogatz, S. Colle
 \end{margintable}
 
 \section{確率的なばらつきの評価}
-\label{sec:org2535bdd}
+\label{sec:org19cb8f4}
 
 確率的な数値実験では，
 乱数系列の違いによって結果はばらつくことになる．
@@ -329,11 +332,13 @@ Watts-Strogatzのモデルを用いることとし，
   X(t)\simeq C\exp(\lambda t)
   % (=C 10^{\lambda' t})
 \end{equation}
+
 このとき
 \begin{equation}
   \frac{X(t+1)}{X(t)}
   =\exp(\lambda)
 \end{equation}
+
 であるから，
 \(\lambda\) は
 単位時間あたりの感染者の増加率(感染速度)を表す量となる．
@@ -341,6 +346,7 @@ Watts-Strogatzのモデルを用いることとし，
 \begin{equation}
   \log X(t) \simeq \lambda t + \log C
 \end{equation}
+
 となることから，
 感染者数の対数を示した右図の傾きから
 指数の係数 \(\lambda\) を推定することができる．\footnote{図では人数に換算しやすいように常用対数を用いたが，
@@ -403,7 +409,7 @@ Watts-Strogatzのモデルを用いることとし，
 拡大の速度の定性的な議論を行うこととする．
 
 \section{グラフ構造の特性の影響}
-\label{sec:org58b5052}
+\label{sec:orgd1d7c37}
 
 次に集団の関係をモデル化するグラフ構造の違いが，
 感染の拡大にどのように影響を与えるか確認する．
@@ -551,7 +557,7 @@ Watts-Strogatzのモデルは
 維持しなくてはならないことになる．\footnote{これは多くの国・自治体が要請している状態に他ならない．}
 
 \section{感染モデルの特性の影響}
-\label{sec:org10458e7}
+\label{sec:org7cc4854}
 
 次に感染モデルの特性が感染に与える影響を確認する．
 実験設定において影響を調べるために変更した特性以外のパラメタは
@@ -610,6 +616,7 @@ Watts-Strogatzのモデルは
   \Prob{\text{隣りに感染しない}}
   =(1-\text{(感染確率)})^\text{(発症期間)}
 \end{equation}
+
 であるが，
 この確率は
 発症期間が長くなるに従って急速に0に近づくため，
@@ -618,6 +625,7 @@ Watts-Strogatzのモデルは
   \Prob{\text{隣りが感染する}}
   =1-(1-\text{(感染確率)})^\text{(発症期間)}
 \end{equation}
+
 は急速に1に近づき飽和する．
 つまり
 ある程度発症期間が長ければ，
@@ -634,6 +642,7 @@ Watts-Strogatzのモデルは
   \Prob{\text{近傍の誰にも感染しない}}
   =(1-\text{(感染確率)})^\text{(発症期間)$\times$(次数)}
 \end{equation}
+
 であり，
 次数が大きい場合は発症期間の長さが短かくても
 この値は小さな値となることがわかる．
@@ -644,6 +653,7 @@ Watts-Strogatzのモデルは
     =1-(1-\text{(感染確率)})^\text{(発症期間)$\times$(次数)}
   \end{multlined}
 \end{equation}
+
 であり，
 近傍の1名のみが感染する確率は
 \begin{equation}
@@ -655,6 +665,7 @@ Watts-Strogatzのモデルは
     % \sum_{t=1}^{\text{(発症期間)}}(1-\text{(感染確率)})^{t-1}\text{(感染確率)}
   \end{multlined}
 \end{equation}
+
 であるから，この差が2名以上感染する確率となる．
 ある程度の次数と発症期間があれば1名のみが感染する確率は小さく，
 ほぼ確実に2名以上に感染することになるため，
@@ -712,7 +723,7 @@ Watts-Strogatzのモデルは
 次項では，この現象の仕組みを調べてみることにする．
 
 \section{感染拡大の相転移}
-\label{sec:orgd996465}
+\label{sec:orgb43def8}
 
 前項では
 感染確率を動かしながら，
@@ -817,6 +828,7 @@ Watts-Strogatzのモデルは
   =\Prob{\text{頂点$i$から無限遠点まで感染しない}}
   \quad\text{(頂点$i$によらない)}
 \end{equation}
+
 を考える．
 4つの頂点が隣接しているグラフを考えているので，
 隣を経由して無限遠点まで感染が拡がるか否かは
@@ -835,6 +847,7 @@ Watts-Strogatzのモデルは
     \times\underbrace{Q}_{j\not\to\infty}
     \bigr\}^{4}
 \end{align}
+
 4近傍の各点から無限遠への経路の有無は本来は独立ではないので
 式はあくまで近似であるが，
 定性的な議論としてはこれを認めてもらうこととし，
@@ -846,6 +859,7 @@ Watts-Strogatzのモデルは
 \begin{equation}
   Q=\{(1-P) + P\times Q \}^{4},\;(0\le Q\le 1)
 \end{equation}
+
 式の左辺と右辺をそれぞれ \(R\) とし，
 横軸を \(Q\)
 縦軸を \(R\) として
@@ -854,6 +868,7 @@ Watts-Strogatzのモデルは
   R&=Q && \text{(緑線)}\\
   R&=\{(1-P) + P\times Q\}^{4} &&\text{(オレンジ・赤線)}
 \end{align}
+
 を重ね描きしたものが
 図\ref{fig:exp6-1}(a)である．
 
@@ -865,8 +880,6 @@ Watts-Strogatzのモデルは
   \myGraph{確率$Q$の満たす条件}
   \myGraph{感染確率と全感染率の関係}
 \end{figure*}
-
-\#+end\textsubscript{export}
 
 \(R=Q\) (緑線)と
 \(R=(Q\text{の4次式})\) (オレンジ・赤線)
@@ -884,10 +897,8 @@ Watts-Strogatzのモデルは
 これから閾値(この場合は \(p=0.25\))を越えると
 急速に全感染率が1に近付いくていことがわかる．\footnote{厳密な解析による閾値は \(p=0.5\) である．}
 
-\#+end\textsubscript{export}
-
 \section{おわりに}
-\label{sec:org9b2386d}
+\label{sec:orgbd23079}
 
 感染そのものは医学的な問題であるが，
 感染の拡大する仕組みは数理的な問題として定式化される．

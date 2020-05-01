@@ -1,8 +1,6 @@
 #+TITLE: 感染症の確率シミュレーション
 #+OPTIONS: toc:nil
 # C-c C-e m m
-#+PROPERTY: header-args:latex :results raw
-#+PROPERTY: header-args+:latex :exports results
 
 * 感染症の確率シミュレーション
 
@@ -12,25 +10,3 @@
 
 まだ誤植や誤解がいろいろありそう．
 
-#+begin_src latex :exports results :results raw
-  \begin{equation}
-    y=f(x)
-  \end{equation}
-#+end_src
-
-#+begin_src latex
-  \begin{equation}
-    y=g(x)
-  \end{equation}
-#+end_src
-
-#+RESULTS:
-\begin{equation}
-  y=h(x)
-\end{equation}
-
-#+begin_export latex
-  \begin{equation}
-    y=l(x)
-  \end{equation}
-#+end_export
