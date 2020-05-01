@@ -16,6 +16,12 @@
   \end{equation}
 #+end_src
 
+#+begin_src latex
+  \begin{equation}
+    y=f(x)
+  \end{equation}
+#+end_src
+
 #+RESULTS:
 \begin{equation}
   y=f(x)
