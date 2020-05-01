@@ -20,17 +20,17 @@
 
 #+begin_src latex
   \begin{equation}
-    y=f(x)
+    y=g(x)
   \end{equation}
 #+end_src
 
 #+RESULTS:
 \begin{equation}
-  y=f(x)
+  y=h(x)
 \end{equation}
 
 #+begin_export latex
   \begin{equation}
-    y=f(x)
+    y=l(x)
   \end{equation}
 #+end_export
