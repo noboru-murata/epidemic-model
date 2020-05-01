@@ -16,6 +16,11 @@
   \end{equation}
 #+end_src
 
+#+RESULTS:
+\begin{equation}
+  y=f(x)
+\end{equation}
+
 #+begin_export latex
   \begin{equation}
     y=f(x)
