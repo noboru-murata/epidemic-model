@@ -4,9 +4,9 @@
 #+SUBJECT: メモ
 #+KEYWORD: 感染症，確率モデル，感染拡大，非線形力学，相転移，パーコレーション
 #+LANGUAGE: japanese
-
-#+LaTeX_CLASS: memo
-#+LaTeX_CLASS_OPTIONS: [10pt,oneside]
+#+LaTeX_CLASS: scrartcl
+#+LaTeX_CLASS_OPTIONS: [10pt,oneside,fleqn]
+#+LATEX_HEADER: \usepackage{myhandout}
 #+STARTUP: overview
 #+STARTUP: hidestars
 #+OPTIONS: date:t H:4 num:t toc:nil \n:nil
@@ -81,16 +81,16 @@
 発症期間を $\Delta P$ で表すことにする．
 頂点は非負の整数値を取り，
 その値はそれぞれ以下の状態に対応する．
-#+begin_src latex
+#+begin_export latex
 \begin{align}
   S_{i}(t)\in\mathcal{N}_{S}
   &=\braces{0}&&\text{(未感染)}\\
   S_{i}(t)\in\mathcal{N}_{L}
   &=\braces{1,\dotsc,\Delta L}&&\text{(潜伏)}\\
   S_{i}(t)\in\mathcal{N}_{P}
-  &=\braces{\Delta L{+}1,\dotsc,\Delta P}&&\text{(発症)}\\
+  &=\braces{\Delta L{+}1,\dotsc,\Delta L{+}\Delta P}&&\text{(発症)}\\
   S_{i}(t)\in\mathcal{N}_{R}
-  &=\braces{\Delta P{+}1,\dotsc}&&\text{(隔離)}
+  &=\braces{\Delta L{+}\Delta P{+}1,\dotsc}&&\text{(隔離)}
 \end{align}
 % \begin{equation}
 %   S_{i}(t)
@@ -102,7 +102,7 @@
 %     -1 &\text{(隔離)}
 %   \end{cases}
 % \end{equation}
-#+end_src
+#+end_export
 したがって，
 状態$S_{i}(t)$ には
 頂点 $i$ が感染してからの単位時間数が保持されることになる．
@@ -111,15 +111,15 @@
 頂点 $i$ は未感染で，
 頂点 $j$ が発症期間にある場合，
 感染は確率 $p$ で各辺ごとに独立に起こるとする．
-#+begin_src latex
+#+begin_export latex
 \begin{align}
   \Prob{\text{頂点$j$から$i$に感染する}} &=p\\
   \Prob{\text{頂点$j$から$i$に感染しない}}&=1-p
 \end{align}
-#+end_src
+#+end_export
 まとめると状態の遷移は以下の規則に従って
 単位時間ごとに行われる．
-#+begin_src latex
+#+begin_export latex
 \begin{equation}
   S_{i}(t{+}1)
   =
@@ -130,7 +130,7 @@
     S_{i}(t)+1&\text{(それ以外)}
   \end{cases}
 \end{equation}
-#+end_src
+#+end_export
 以上が，基本的なモデルとなる．
 
 現実を模擬するには，
@@ -145,7 +145,7 @@
 感染モデルの数値実験を行い，
 その結果を視覚化する．
 
-#+begin_src latex
+#+begin_export latex
 \begin{figure*}%[htbp]
   \centering
   \GraphFile{figs/exp1}
@@ -157,7 +157,7 @@
     ランダムな構造を持つものまで多様なグラフを生成することができる．
     \label{fig:exp1-1}}
 \end{figure*}
-#+end_src
+#+end_export
 
 以下では集団のグラフ構造の生成モデルとして
 Watts-Strogatzのモデルを用いる．[fn:5]
@@ -175,7 +175,7 @@ Watts-Strogatzのモデルを用いる．[fn:5]
 初期次数6，
 張替確率を0,0.05,1とした場合に生成されるグラフの例である．
 
-#+begin_src latex
+#+begin_export latex
 \begin{figure}[htbp]
   \centering
   \myGraph{$t=1$}
@@ -207,7 +207,7 @@ Watts-Strogatzのモデルを用いる．[fn:5]
     % 時間経過とともに未感染者が減少していく様子がわかる．
     \label{fig:exp1-2}}
 \end{figure}
-#+end_src
+#+end_export
 
 次に，
 表\ref{tab:exp1}に示すパラメタのもとで生成したグラフ上を
@@ -232,7 +232,7 @@ Watts-Strogatzのモデルを用いる．[fn:5]
 感染者が少ない初期は拡がり方(感染率)はゆっくりとしているが，
 拡がり始めると指数的に速度が上昇することがわかる．
 
-#+begin_src latex
+#+begin_export latex
 \begin{margintable}
   \caption{実験設定}
   \label{tab:exp1}
@@ -251,7 +251,7 @@ Watts-Strogatzのモデルを用いる．[fn:5]
     \bottomrule
   \end{tabular}
 \end{margintable}
-#+end_src
+#+end_export
 
 * 確率的なばらつきの評価
 
@@ -271,7 +271,7 @@ Watts-Strogatzのモデルを用いる．[fn:5]
 Watts-Strogatzのモデルを用いることとし，
 実験の設定を表\ref{tab:exp2}にまとめる．
 
-#+begin_src latex
+#+begin_export latex
 \begin{margintable}
   \caption{実験設定}
   \label{tab:exp2}
@@ -290,9 +290,9 @@ Watts-Strogatzのモデルを用いることとし，
     \bottomrule
   \end{tabular}
 \end{margintable}
-#+end_src
+#+end_export
 
-#+begin_src latex
+#+begin_export latex
 \begin{figure*}%[htbp]
   \centering
   \GraphFile{figs/exp2}
@@ -303,7 +303,7 @@ Watts-Strogatzのモデルを用いることとし，
     拡大の指数的な速度の性質はほとんど変わらないことがわかる．
     \label{fig:exp2-1}}
 \end{figure*}
-#+end_src
+#+end_export
 
 まず，
 集団のグラフも初期の感染者も固定して，
@@ -313,28 +313,28 @@ Watts-Strogatzのモデルを用いることとし，
 左図は集団全体に対する感染者の比率の推移を，
 右図は感染者数の対数値(常用対数)の推移を示したものである．
 感染の拡大期には患者数 $X(t)$ は指数的に増加する．
-#+begin_src latex
+#+begin_export latex
 \begin{equation}
   X(t)\simeq C\exp(\lambda t)
   % (=C 10^{\lambda' t})
 \end{equation}
-#+end_src
+#+end_export
 このとき
-#+begin_src latex
+#+begin_export latex
 \begin{equation}
   \frac{X(t+1)}{X(t)}
   =\exp(\lambda)
 \end{equation}
-#+end_src
+#+end_export
 であるから，
 $\lambda$ は
 単位時間あたりの感染者の増加率(感染速度)を表す量となる．
 感染者数 $X(t)$ の両辺の対数を取ると
-#+begin_src latex
+#+begin_export latex
 \begin{equation}
   \log X(t) \simeq \lambda t + \log C
 \end{equation}
-#+end_src
+#+end_export
 となることから，
 感染者数の対数を示した右図の傾きから
 指数の係数 $\lambda$ を推定することができる．[fn:8]
@@ -348,7 +348,7 @@ $\lambda$ は
 感染者が指数的に増大する時期の感染速度には
 ほとんど影響しないことがわかる．
 
-#+begin_src latex
+#+begin_export latex
 \begin{figure*}%[htbp]
   \centering
   \myGraph{感染率の推移}
@@ -359,7 +359,7 @@ $\lambda$ は
     拡大の指数的な速度はほとんど変わらないことがわかる．
     \label{fig:exp2-2}}
 \end{figure*}
-#+end_src
+#+end_export
 
 次に感染の発生源の違いによるばらつきを確認する．
 集団のグラフを固定して，
@@ -369,7 +369,7 @@ $\lambda$ は
 感染の拡大が開始される時間にばらつきはあるが，
 拡大速度はほぼ同様であることが確認できる．
 
-#+begin_src latex
+#+begin_export latex
 \begin{figure*}%[htbp]
   \centering
   \myGraph{感染率の推移}
@@ -379,7 +379,7 @@ $\lambda$ は
     感染拡大の動的な性質はほとんど変わならいことがわかる．
     \label{fig:exp2-3}}
 \end{figure*}
-#+end_src
+#+end_export
 
 最後に，
 初期次数と張替確率を固定してグラフを複数生成し，
@@ -418,7 +418,7 @@ Watts-Strogatzのモデルは
 - 張替確率(小さければ規則的，大きければランダム)
 を考える．
 
-#+begin_src latex
+#+begin_export latex
 \begin{figure*}%[htbp]
   \centering
   \GraphFile{figs/exp3}
@@ -430,7 +430,7 @@ Watts-Strogatzのモデルは
     ある程度で速度はほぼ飽和する．
     \label{fig:exp3-1}}
 \end{figure*}
-#+end_src
+#+end_export
 
 まず，初期グラフの次数の影響を調べた結果を
 図\ref{fig:exp3-1}に示す．
@@ -510,7 +510,7 @@ Watts-Strogatzのモデルは
 任意の2頂点間の平均的な距離が短くなるため，
 感染速度が拡大すると考えられる．
 
-#+begin_src latex
+#+begin_export latex
 \begin{figure*}%[htbp]
   \centering
   \myGraph{感染率の推移}
@@ -520,7 +520,7 @@ Watts-Strogatzのモデルは
     この設定では0.03を越えると速度に大きな差がなくなっている．
     \label{fig:exp3-2}}
 \end{figure*}
-#+end_src
+#+end_export
 
 以上より，
 感染の拡大においては
@@ -547,7 +547,7 @@ Watts-Strogatzのモデルは
 
 # 単位時間を1日として話をしよう．
 
-#+begin_src latex
+#+begin_export latex
 \begin{figure*}%[htbp]
   \centering
   \GraphFile{figs/exp4}
@@ -558,7 +558,7 @@ Watts-Strogatzのモデルは
     感染速度が単調に減少していることがわかる．
     \label{fig:exp4-1}}
 \end{figure*}
-#+end_src
+#+end_export
 
 まず潜伏期間の影響を調べた結果を
 図\ref{fig:exp4-1}に示す．
@@ -568,7 +568,7 @@ Watts-Strogatzのモデルは
 潜伏期間の長さは同じ範囲に感染が拡大するのに掛かる時間に比例することになるので，
 潜伏期間の長さは速度にきわめて単純な形で影響を与えることがわかる．
 
-#+begin_src latex
+#+begin_export latex
 \begin{figure*}%[htbp]
   \centering
   \myGraph{感染率の推移}
@@ -579,7 +579,7 @@ Watts-Strogatzのモデルは
     ある程度の長さになると速度は飽和する．
     \label{fig:exp4-2}}
 \end{figure*}
-#+end_src
+#+end_export
 
 次に感染を媒介する発症期間の影響を調べた結果を
 図\ref{fig:exp4-2}に示す．
@@ -594,22 +594,22 @@ Watts-Strogatzのモデルは
 
 発症期間に
 辺で直接繋がれた隣の人に感染しない確率は
-#+begin_src latex
+#+begin_export latex
 \begin{equation}
   \Prob{\text{隣りに感染しない}}
   =(1-\text{(感染確率)})^\text{(発症期間)}
 \end{equation}
-#+end_src
+#+end_export
 であるが，
 この確率は
 発症期間が長くなるに従って急速に0に近づくため，
 隣の人が感染する確率
-#+begin_src latex
+#+begin_export latex
 \begin{equation}
   \Prob{\text{隣りが感染する}}
   =1-(1-\text{(感染確率)})^\text{(発症期間)}
 \end{equation}
-#+end_src
+#+end_export
 は急速に1に近づき飽和する．
 つまり
 ある程度発症期間が長ければ，
@@ -622,27 +622,27 @@ Watts-Strogatzのモデルは
 したがって感染者が平均何名に媒介するかが重要となる．
 まず，
 近傍の誰にも感染しない確率は
-#+begin_src latex
+#+begin_export latex
 \begin{equation}
   \Prob{\text{近傍の誰にも感染しない}}
   =(1-\text{(感染確率)})^\text{(発症期間)$\times$(次数)}
 \end{equation}
-#+end_src
+#+end_export
 であり，
 次数が大きい場合は発症期間の長さが短かくても
 この値は小さな値となることがわかる．
 近傍の1名以上が感染する確率は
-#+begin_src latex
+#+begin_export latex
 \begin{equation}
   \begin{multlined}
     \Prob{\text{近傍の1名以上が感染する}}\\
     =1-(1-\text{(感染確率)})^\text{(発症期間)$\times$(次数)}
   \end{multlined}
 \end{equation}
-#+end_src
+#+end_export
 であり，
 近傍の1名のみが感染する確率は
-#+begin_src latex
+#+begin_export latex
 \begin{equation}
   \begin{multlined}
     \Prob{\text{近傍の1名のみが感染する}}\\
@@ -652,7 +652,7 @@ Watts-Strogatzのモデルは
     % \sum_{t=1}^{\text{(発症期間)}}(1-\text{(感染確率)})^{t-1}\text{(感染確率)}
   \end{multlined}
 \end{equation}
-#+end_src
+#+end_export
 であるから，この差が2名以上感染する確率となる．
 ある程度の次数と発症期間があれば1名のみが感染する確率は小さく，
 ほぼ確実に2名以上に感染することになるため，
@@ -663,7 +663,7 @@ Watts-Strogatzのモデルは
 発症をすみやかに検知し，
 できるだけ早く隔離することが重要であることがわかる．
 
-#+begin_src latex
+#+begin_export latex
 \begin{figure*}%[htbp]
   \centering
   \myGraph{感染率の推移}
@@ -676,7 +676,7 @@ Watts-Strogatzのモデルは
     蔓延せずに感染が終息する場合がある．
     \label{fig:exp4-3}}
 \end{figure*}
-#+end_src
+#+end_export
 
 感染確率を変えると
 少し異なる状況があらわれる．
@@ -691,7 +691,7 @@ Watts-Strogatzのモデルは
 蔓延せずに感染が終息している場合がある．
 # 蔓延するかしないかが不連続に変化しているように見える
 
-#+begin_src latex
+#+begin_export latex
 \begin{figure*}%[htbp]
   \centering
   \myGraph{感染率の推移}
@@ -701,7 +701,7 @@ Watts-Strogatzのモデルは
     最終状態が異なっている．
     \label{fig:exp4-4}}
 \end{figure*}
-#+end_src
+#+end_export
 
 感染状況のこの不連続な変化を確認するために，
 感染確率を低い範囲で動かしてより詳細に調べたのが
@@ -734,7 +734,7 @@ Watts-Strogatzのモデルは
 各頂点がその4近傍と辺で結ばれた規則的なグラフを考える．
 それ以外の実験設定を表\ref{tab:exp5}にまとめる．
 
-#+begin_src latex
+#+begin_export latex
 \begin{margintable}
   \caption{実験設定}
   \label{tab:exp5}
@@ -752,9 +752,9 @@ Watts-Strogatzのモデルは
     \bottomrule
   \end{tabular}
 \end{margintable}
-#+end_src
+#+end_export
 
-#+begin_src latex
+#+begin_export latex
 \begin{figure}[htbp]
   \centering
   \GraphFile{figs/exp5}
@@ -769,7 +769,7 @@ Watts-Strogatzのモデルは
     感染の増大は指数関数ほど速くはない．
     \label{fig:exp5-1}}
 \end{figure}
-#+end_src
+#+end_export
 
 図\ref{fig:exp5-1}に感染の推移を示す．
 規則的ではあるが，
@@ -785,7 +785,7 @@ Watts-Strogatzのモデルは
 各感染確率ごとに
 時刻60での感染率を箱ひげ図で表示している．
 
-#+begin_src latex
+#+begin_export latex
 \begin{figure}[htbp]
   \sidecaption{感染確率と感染率の関係．
     感染確率の違いにより，
@@ -795,7 +795,7 @@ Watts-Strogatzのモデルは
   \centering
   \myGraph*{}
 \end{figure}
-#+end_src
+#+end_export
 
 十分時間が経過したあとの終息結果は，
 感染確率の違いにより急激に変わる．
@@ -806,7 +806,7 @@ Watts-Strogatzのモデルは
 低い確率では局所的な感染で終息しているが，
 高い確率では大域的な蔓延となっている．
 
-#+begin_src latex
+#+begin_export latex
 \begin{figure*}%[htbp]
   \centering
   \myGraph[.3]{感染確率$=0.2$}
@@ -817,23 +817,23 @@ Watts-Strogatzのモデルは
     高い確率では全体に蔓延している．
     \label{fig:exp5-3}}
 \end{figure*}
-#+end_src
+#+end_export
 
 感染確率が蔓延の仕方に及ぼす影響は，
 以下のように近似的に解析できる．
 無限遠点まで感染が拡がるか否かの確率
-#+begin_src latex
+#+begin_export latex
 \begin{equation}
   Q
   =\Prob{\text{頂点$i$から無限遠点まで感染しない}}
   \quad\text{(頂点$i$によらない)}
 \end{equation}
-#+end_src
+#+end_export
 を考える．
 4つの頂点が隣接しているグラフを考えているので，
 隣を経由して無限遠点まで感染が拡がるか否かは
 感染確率を $P$ として以下のように考えられる．
-#+begin_src latex
+#+begin_export latex
 \begin{align}
   Q
   &=\Prob{\text{頂点$i$から無限遠点に到達する経路がない}}\\
@@ -848,31 +848,31 @@ Watts-Strogatzのモデルは
     \times\underbrace{Q}_{j\not\to\infty}
     \bigr\}^{4}
 \end{align}
-#+end_src
+#+end_export
 4近傍の各点から無限遠への経路の有無は本来は独立ではないので
 式はあくまで近似であるが，
 定性的な議論としてはこれを認めてもらうこととし，
 感染確率 $P$ に対して
 以下の式を満たす $Q$ がどのような値となるかを考える．[fn:14]
-#+begin_src latex
+#+begin_export latex
 \begin{equation}
   Q=\{(1-P) + P\times Q \}^{4},\;(0\le Q\le 1)
 \end{equation}
-#+end_src
+#+end_export
 式の左辺と右辺をそれぞれ $R$ とし，
 横軸を $Q$
 縦軸を $R$ として
 2つの関数
-#+begin_src latex
+#+begin_export latex
 \begin{align}
   R&=Q && \text{(緑線)}\\
   R&=\{(1-P) + P\times Q\}^{4} &&\text{(オレンジ・赤線)}
 \end{align}
-#+end_src
+#+end_export
 を重ね描きしたものが
 図\ref{fig:exp6-1}(a)である．
 
-#+begin_src latex
+#+begin_export latex
 \begin{figure*}%[htbp]
   \sidecaption{格子グラフ上の感染の終息状態の定性的な解析．
     \label{fig:exp6-1}}
@@ -881,9 +881,9 @@ Watts-Strogatzのモデルは
   \myGraph{確率$Q$の満たす条件}
   \myGraph{感染確率と全感染率の関係}
 \end{figure*}
-#+end_src
+#+end_export
 
-# #+begin_src latex
+# #+begin_export latex
 # \begin{figure}%[htbp]
 #   \sidecaption{確率$Q$の満たす条件．
 #     \label{fig:exp6-1}}
@@ -891,7 +891,7 @@ Watts-Strogatzのモデルは
 #   \GraphFile{figs/exp6}
 #   \myGraph*{}
 # \end{figure}
-# #+end_src
+# #+end_export
 
 $R=Q$ (緑線)と
 $R=(Q\text{の4次式})$ (オレンジ・赤線)
@@ -909,14 +909,14 @@ $R=(Q\text{の4次式})$ (オレンジ・赤線)
 これから閾値(この場合は $p=0.25$)を越えると
 急速に全感染率が1に近付いくていことがわかる．[fn:13]
 
-# #+begin_src latex
+# #+begin_export latex
 # \begin{figure}%[htbp]
 #   \sidecaption{感染確率と全感染率の関係．
 #     \label{fig:exp6-2}}
 #   \centering
 #   \myGraph*{}
 # \end{figure}
-# #+end_src
+# #+end_export
 
 * おわりに
 
